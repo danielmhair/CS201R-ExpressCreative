@@ -9,9 +9,9 @@
     <h1>Add a Comment</h1>
     <h2>Go Ahead! Try!</h2>
     <form id="commentForm" action="">
-      Name: <input type="text" id="Name" value="Mickey"><br>
-      Password: <input type="password" id="Password" value="mickeypass"><br>
-      Comment: <input type="text" id="Comment" value="Hello"><br>
+      Name: <input type="text" id="Name" value="Mickey" ng-model="name"><br>
+      Password: <input type="password" id="Password" value="mickeypass" ng-model="pass"><br>
+      Comment: <input type="text" id="Comment" value="Hello" ng-model="comment"><br>
     </form>
     <button ng-click="postComment()">Make a Comment</button>
 
