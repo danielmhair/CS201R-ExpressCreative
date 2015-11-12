@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="angular.min.js"></script>
     <script src="comments.controller.js"></script>
 </head>
 <body ng-app="myApp"  ng-controller="CommentsController">
-    <h1>Add a Comment</h1>
-    <h2>Go Ahead! Try!</h2>
-    <form id="commentForm" action="">
-      Name: <input type="text" id="Name" value="Mickey" ng-model="name"><br>
-      Password: <input type="password" id="Password" value="mickeypass" ng-model="pass"><br>
-      Comment: <input type="text" id="Comment" value="Hello" ng-model="comment"><br>
-    </form>
-    <button ng-click="postComment()">Make a Comment</button>
+    <div class="container">
+        <div class="row text-center">
+            <h1>Add a Todo Item</h1>
+            <div ng-show="loggedIn"><h2>Welcome {{name}}!</h2></div>
+            <button ng-click="logout()" ng-show="loggedIn">Logout</button>
 
-    <div id="json"></div>
-    <h3>Current comments:</h3>
-    <div id="currentCommentsAngular">
-        <ul>
-            <li ng-repeat="comment in comments"><strong>Name:</strong> {{comment.name}}, <strong>Comment:</strong> {{comment.comment}}</li>
-        </ul>
+            <form id="commentForm" ng-submit="checkAuthThenComment()">
+              <input type="text" placeholder="Your Name" id="Name" value="Mickey" ng-hide="loggedIn" ng-model="name"><br>
+              <input type="password" id="Password" placeholder="Your password" value="mickeypass" ng-hide="loggedIn" ng-model="pass">
+              <label ng-show="loggedIn">Comment: </label><input type="text" id="Comment" value="Hello" ng-show="loggedIn" ng-model="comment"><br>
+              <button ng-click="login()" ng-hide="loggedIn">Login</button>
+              <button ng-click="register()" ng-hide="loggedIn">Create a new account</button>
+              <button type="submit" ng-show="loggedIn">Add a todo item</button>
+            </form>
+            <div ng-show="loggedIn">
+                <div id="json"></div>
+                <h3>Current comments:</h3>
+                <div id="currentCommentsAngular">
+                    <ul>
+                        <li ng-repeat="comment in comments"><strong>Name:</strong> {{comment.name}}, <strong>Comment:</strong> {{comment.comment}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

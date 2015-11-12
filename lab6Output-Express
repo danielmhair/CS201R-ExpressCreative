@@ -1,13 +1,127 @@
-/opt/bitnami/apache2/htdocs/CS201R/Lab6-Express/server.js:82
-    res.header("Access-Control-Allow-Origin": "http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com");
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-SyntaxError: missing ) after argument list
-    at exports.runInThisContext (vm.js:53:16)
-    at Module._compile (module.js:413:25)
-    at Object.Module._extensions..js (module.js:452:10)
-    at Module.load (module.js:355:32)
-    at Function.Module._load (module.js:310:12)
-    at Function.Module.runMain (module.js:475:10)
-    at startup (node.js:117:18)
-    at node.js:951:3
+Failed to load c++ bson extension, using pure JS version
+getting credentials
+{ Name: 'Mickey', Password: 'mickeypass' }
+itemArr
+[ { _id: 5644b9107edb636f27f17953,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Add todo items and get started on a very planned life!' },
+  { _id: 5644b9107edb636f27f17954,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9c2fca5359f275da248,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9c2fca5359f275da249,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9c3fca5359f275da24a,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9c3fca5359f275da24b,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9ecfca5359f275da24d,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9edfca5359f275da24e,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba18fca5359f275da252,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba18fca5359f275da253,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba19fca5359f275da254,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba1afca5359f275da255,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Add todo items and get started on a very planned life!' },
+  { _id: 5644ba1afca5359f275da256,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644baf4551668ad28f462d0,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644baf4551668ad28f462d1,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644baf4551668ad28f462d2,
+    Name: 'Mickey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' } ]
+{ Name: 'Mickey' }
+Record added as 5644bbc1c5f2873029b195e4
+Record added as 5644bbc1c5f2873029b195e5
+Record added as 5644bbc2c5f2873029b195e6
+getting credentials
+{ Name: 'Joey', Password: 'mickeypass' }
+itemArr
+[ { _id: 5644b96ffca5359f275da246,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Add todo items and get started on a very planned life!' },
+  { _id: 5644b96ffca5359f275da247,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9ccfca5359f275da24c,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9f3fca5359f275da24f,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Add todo items and get started on a very planned life!' },
+  { _id: 5644b9f3fca5359f275da250,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644b9f7fca5359f275da251,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba2afca5359f275da257,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba2afca5359f275da258,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba2afca5359f275da259,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644ba2afca5359f275da25a,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644bafe551668ad28f462d3,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' },
+  { _id: 5644bafe551668ad28f462d4,
+    Name: 'Joey',
+    Password: 'mickeypass',
+    Comment: 'Todo item' } ]
+{ Name: 'Joey' }
+Record added as 5644bbcac5f2873029b195e7
+Record added as 5644bbcac5f2873029b195e8
+Record added as 5644bbcbc5f2873029b195e9
