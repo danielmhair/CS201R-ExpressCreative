@@ -6,6 +6,7 @@ var util = require('util');
 var url = require('url');
 var readline = require('readline');
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require("mongodb").ObjectID;
 var request = require("request");
 var bodyParser = require('body-parser');
 var basicAuth = require('basic-auth-connect');
@@ -16,8 +17,10 @@ var options = {
     key: fs.readFileSync('ssl/server.key'),
     cert: fs.readFileSync('ssl/server.crt')
 };
+var username = "";
+var password = "";
 
-http.createServer(app).listen(3007);
+http.createServer(app).listen(3006);
 
 app.use(bodyParser());
 app.use('/', express.static('./auth-comments', {maxAge: 60*60*1000}));
@@ -31,7 +34,13 @@ app.get('/comment', function (req, res) {
      if (err) throw err;
      comments.find(userQuery,function(err, items) {
       items.toArray(function(err, itemArr) {
-       res.writeHead(200, { "Access-Control-Allow-Origin": "http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com:3007" });
+           itemArr = itemArr.filter(function(item) {
+           //console.log(item);
+           //We want item.Password to be defined
+           return item.Name === username && item.Password === password;
+      });
+
+       res.writeHead(200, { "Access-Control-Allow-Origin": "http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com:3006" });
        res.end(JSON.stringify(itemArr));
       });
      });
@@ -42,11 +51,12 @@ app.get('/comment', function (req, res) {
 //POST Methods
 app.post('/comment', function (req, res) {
     var reqObj = req.body;
+console.log(req.body);
     MongoClient.connect("mongodb://localhost/comments", function(err, db) {
         if(err) console.log(err);
         db.collection('comments').insert(reqObj,function(err, records) {
             console.log("Record added as "+records[0]._id);
-            res.writeHead(200, { "Access-Control-Allow-Origin": "http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com:3007" });
+            res.writeHead(200, { "Access-Control-Allow-Origin": "http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com:3006" });
             res.end(JSON.stringify(records[0]));
         });
     });
@@ -55,10 +65,10 @@ app.post('/comment', function (req, res) {
 app.get('/credentials', function(req, res) {
     console.log("getting credentials");
     console.log(req.query);
-    res.header("Access-Control-Allow-Origin","http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com:3007");
+    res.header("Access-Control-Allow-Origin","http://ec2-52-88-191-100.us-west-2.compute.amazonaws.com:3006");
     
-    var username = req.query.Name;
-    var password = req.query.Password;
+    username = req.query.Name;
+    password = req.query.Password;
     MongoClient.connect("mongodb://localhost/comments", function(err, db) {
         if(err) throw err;
         db.collection("comments", function(err, comments){

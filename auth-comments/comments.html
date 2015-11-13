@@ -1,39 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    
-    <!-- Latest compiled and minified CSS -->
+ <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="angular.min.js"></script>
     <script src="comments.controller.js"></script>
-</head>
-<body ng-app="myApp"  ng-controller="CommentsController">
-    <div class="container">
-        <div class="row text-center">
-            <h1>Add a Todo Item</h1>
-            <div ng-show="loggedIn"><h2>Welcome {{name}}!</h2></div>
-            <button ng-click="logout()" ng-show="loggedIn">Logout</button>
 
-            <form id="commentForm" ng-submit="checkAuthThenComment()">
-              <input type="text" placeholder="Your Name" id="Name" value="Mickey" ng-hide="loggedIn" ng-model="name"><br>
-              <input type="password" id="Password" placeholder="Your password" value="mickeypass" ng-hide="loggedIn" ng-model="pass">
-              <label ng-show="loggedIn">Comment: </label><input type="text" id="Comment" value="Hello" ng-show="loggedIn" ng-model="comment"><br>
-              <button ng-click="login()" ng-hide="loggedIn">Login</button>
-              <button ng-click="register()" ng-hide="loggedIn">Create a new account</button>
-              <button type="submit" ng-show="loggedIn">Add a todo item</button>
-            </form>
-            <div ng-show="loggedIn">
-                <div id="json"></div>
-                <h3>Current comments:</h3>
-                <div id="currentCommentsAngular">
-                    <ul>
-                        <li ng-repeat="comment in comments"><strong>Name:</strong> {{comment.name}}, <strong>Comment:</strong> {{comment.comment}}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lab 6 - Express Creative Lab (Daniel Hair)</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+	<body ng-app="myApp"  ng-controller="CommentsController">
+		<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+			<div class="container topnav">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand topnav" href="#" ng-show="loggedIn">Welcome {{name}}</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="http://www.danielmhair.com">About</a>
+						</li>
+						<li><a ng-click="logout()" ng-show="loggedIn" style="cursor: pointer; color: green;">Logout</a></li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+        <!-- /.container -->
+		</nav>
+	
+		<div class="container">
+			<div class="row text-center">
+				
+
+				
+				
+			</div>
+		</div>
+
+   
+
+    <!-- Header -->
+    <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+			<div class="row">
+                <div class="col-lg-12">
+                    <div>
+                        <h1>Add a Todo Item</h1>
+					</div>
+                        <hr class="intro-divider">
+							<form id="commentForm" ng-submit="checkAuthThenComment()">
+								<div style="color:black">
+								  <input class="form-control" type="text" placeholder="Your Name" id="Name" value="Mickey" ng-hide="loggedIn" ng-model="name"><br>
+								</div>
+								<div style="color:black">
+								 <input class="form-control" type="password" id="Password" placeholder="Your password" value="mickeypass" ng-hide="loggedIn" ng-model="pass">
+								</div>
+								<div style="color:black">
+								  <input type="text" id="Comment" value="Hello" ng-show="loggedIn" ng-model="comment" class="form-control"><br>
+								</div>
+							</form>
+						</hr>
+                        <div class="alert alert-danger" ng-show="loginMessage != ''">{{loginMessage}}</div>
+				</div>
+			</div>
+			<div class="row">
+                <div class="col-lg-12">
+								  <button style="color:black !important" class="btn btn-default" ng-click="login()" ng-hide="loggedIn">Login</button>
+								  <button class="btn btn-success" ng-click="register()" ng-hide="loggedIn">Create a new account</button>
+								  <button class="btn btn-success" ng-click="postComment()" type="submit" ng-show="loggedIn">Add a todo item</button>
+                           
+				</div>
+			</div>
+			<div class="row">
+                <div class="col-lg-12">
+					<div ng-show="loggedIn">
+						<div id="json"></div>
+						<h3>Current comments:</h3>
+						<div id="currentCommentsAngular">
+							<ul>
+								<li ng-repeat="comment in comments">{{comment.comment}}</li>
+							</ul>
+						</div>
+					</div>
+                    
+                
+
+				</div>
+        <!-- /.container -->
+
+   
 </body>
+
 </html>
